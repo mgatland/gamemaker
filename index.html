@@ -16,11 +16,12 @@
   <body>
   <div class="container">
     <h1>GameMaker in DIDG501</h1>
-    <p>Link to the Google Doc (new changes appear there first): <a target="_blank" href="https://goo.gl/TO6WnS">https://goo.gl/TO6WnS</a></p>
 
-    <p>We are using GameMaker to make a 2d platform game.</p>
+    <p>New workshop material appears in the Google Doc first: <a target="_blank" href="https://goo.gl/TO6WnS">https://goo.gl/TO6WnS</a></p>
 
     <h2>About GameMaker</h2>
+
+    <p>We are using GameMaker to make a 2d platform game.</p>
 
     <p>GameMaker is a popular game-making tool for beginners. It's relatively easy to learn, but can take you all the way to making commercially successful games.</p>
 
@@ -50,22 +51,33 @@
 
     <h2>How to learn GameMaker</h2>
 
-    <p>1. Watch these tutorial videos:</p>
+    <h3>1. Watch these tutorial videos:</h3>
 
     <p><a target="_blank" href="https://youtu.be/hzMNunoPd0o">Gamemaker basics</a> by Shaun Spalding</p>
     <p><a target="_blank" href="http://www.yoyogames.com/learn/platform">Platform Game series</a> by Shaun Spalding (this is a series of 12 videos)</p>
 
-    <p>2. If you have a question, Google it. For example:</p>
+    <h3>2. If you have a question, Google it.</h3>
+
+    <p>For example:</p>
 
      <ul>
        <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=gamemaker+menu+screen">gamemaker menu screen</a></li>
        <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=how+to+make+jump+through+platforms+in+gamemaker">how to make jump through platforms in gamemaker</a></li>
        <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=restart+current+level+gamemaker">restart current level gamemaker</a></li>
-     </ul> 
+     </ul>
 
-     <p>3. Use the built-in help</p>
+     <h3>3. Use the built-in help</h3>
 
      <p>In GameMaker, press F1 to open the help. This includes a reference manual which lists every command you can use while coding in GameMaker.</p>
+
+     <p>While writing code, If you start typing a command then wait for a moment, GameMaker will display a list of commands you might be typing.</p>
+
+     <p>For example, type in 'place' then wait for a second (or press Ctrl) and this will appear:</p>
+     <img src="images/autocomplete.png">
+
+     <h3>4. This course!</h3>
+
+     <p>The classes in this course should be helpful if you are finding it difficult to learn from the resources above.</p>
 
      <h2>GameMaker at AUT</h2>
 
@@ -99,7 +111,7 @@
 
  <p>
    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTipsAtAUT" aria-expanded="false" aria-controls="collapseExample">
-     GameMaker is really slow at AUT | GameMaker won't run my game at AUT
+     Help, GameMaker is too slow at AUT <br> Or GameMaker won't open my game at AUT
    </button>
  </p>
  <div class="collapse" id="collapseTipsAtAUT">
@@ -109,6 +121,7 @@
 
         <p>Near the bottom, you will see paths for Temp directory, Asset Cache directory, Backup directory and Home directory. Change all of these to a folder on your computer's desktop.</p>
         <p>This will make GameMaker work a lot faster.</p>
+
         <h3>GameMaker won't open my game???</h3>
         <p>It doesn't like reading games straight from a USB drive.</p>
         <p>Copy your game folder onto the desktop, then open it from there. When you leave the room, remember to copy it back onto your USB drive.</p>
@@ -137,8 +150,9 @@
       <li>Change the name to spr_player</li>
       <li>Click ‘Edit Sprite’ to open the Sprite Editor</li>
       <li>Click on the blank page icon to create a sprite</li>
+      <img src="images/sprite-editor-new.png">
       <li>You can accept the default size of 32 x 32 and click 'OK'</li>
-      <li></li>
+      <img src="images/sprite-editor-new-2.png">
       <li>The Image Editor appears. Use the drawing tools to draw a quick picture, then close the Image Editor and Sprite Editor.</li>
       <li>In the <i>Sprite Properties</i> window, center the sprite by clicking ‘Center’ in the origin box</li>
 
@@ -152,40 +166,239 @@
       <li>Remember to center it.</li>
     </ul>
 
-    <h4>Create an object</h4>
-    
-    Right click on ‘Objects’ in the main window and choose Create Object.
-    Name the object obj_player
-    Click on ‘&lt;no sprite>’ and change it to spr_player
-    Create another object named obj_wall and change its sprite to spr_wall
-    Create a room by right-clicking on Rooms and choosing Create Room.
-    In the Room Editor, you can place objects:
-     Clicking on the ‘objects tab’
-    clicking in the empty area below the tab and choose what object to place
-    Click inside the room to place copies of that object
-    Place one obj_player and many obj_walls in your room.
-    Close the room editor
-    Set up the obj_player events and actions:
-    Select obj_player so the Object Editor appears again.
-    Use the button below the Events section to add a Create event.
-    On the right hand side, click on the ‘control’ tab - this will show the code blocks.
-    Drag the blank white page icon into the Actions box. This is you saying ‘When this object is created, I want some code to be read.’
-    A code editor will pop up - you can close it for now.
-    Now create another Event: A step event. You will be asked to choose what kind of step, choose the normal step.
-    Once again, drag the blank white page icon into the Actions box. This is you saying: ‘On every step of the game, I want some code to be read’.
-    A code editor will pop up again - you can close it for now.
-    You can bring the code editor back by clicking on the code action. Make sure you choose the right event first! There are two different code sections, one inside the ‘Create’ event and one inside the ‘Step’ event.
+    <h4>Create objects</h4>
 
-    The Create event happens once when an object is created. The Step event happens over and over again, usually 30 or 60 times each second.
+    <ul>
+      <li>Right click on ‘Objects’ in the main window and choose Create Object.</li>
+      <li>Name the object obj_player</li>
+      <li>Click on ‘&lt;no sprite>’ and change it to spr_player</li>
+      <li>Create another object named obj_wall and change its sprite to spr_wall</li>
+    </ul>
+
+    <h4>Create a room</h4>
+    <ul>
+      <li>Create a room by right-clicking on Rooms and choosing Create Room.</li>
+      <li>In the Room Editor, you can place objects:</li>
+      <li> Clicking on the ‘objects tab’</li>
+      <li>clicking in the empty area below the tab and choose what object to place</li>
+      <li>Click inside the room to place copies of that object</li>
+      <li>Place one obj_player and many obj_walls in your room.</li>
+      <li>Close the room editor</li>
+    </ul>
+
+    <h4>Set up Player events</h4>
+    <ul>
+      <li>Set up the obj_player events and actions:</li>
+      <li>Select obj_player so the Object Editor appears again.</li>
+      <li>Use the button below the Events section to add a Create event.</li>
+      <li>On the right hand side, click on the ‘control’ tab - this will show the code blocks.</li>
+      <li>Drag the blank white page icon into the Actions box. This is you saying ‘When this object is created, I want some code to be read.’</li>
+      <li>A code editor will pop up - you can close it for now.</li>
+      <li>Now create another Event: A step event. You will be asked to choose what kind of step, choose the normal step.</li>
+      <li>Once again, drag the blank white page icon into the Actions box. This is you saying: ‘On every step of the game, I want some code to be read’.</li>
+      <li>A code editor will pop up again - you can close it for now.</li>
+      <li>You can bring the code editor back by clicking on the code action. Make sure you choose the right event first! There are two different code sections, one inside the ‘Create’ event and one inside the ‘Step’ event.</li>
+    </ul>
+
+    <p>The Create event happens once when an object is created. The Step event happens over and over again, usually 30 or 60 times each second.</p>
     </div>
   </div>
 
   <h3>Coding Basics</h3>
 
-  <h3>Player movement, gravity and jumping</h3>
-  <p>This is a slightly simplified version of the code in Shaun Spalding's tutorial (linked at the start of this document. It works the same.</p>
+  <p>
+     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsecodingbasics" aria-expanded="false" aria-controls="collapseExample">
+       Show me basic coding examples
+     </button>
+   </p>
+   <div class="collapse" id="collapsecodingbasics">
+     <div class="card card-block">
+
+         <h5>A comment</h5>
+        <code><pre>
+//this does nothing
+//lines that start with two slashes are ignored by the computer
+//these are called comments and you use them to make helpful notes</pre></code>
+
+<h5>if-statement</h5>
+
+<p>If-statements let you make something only happen in a certain situation. A real life example would be "If I'm hungry, I buy a hamburger."</p>
+
+<p>In the code, the curley brackets {} show what code is connected to the if-statement. All code in the curley brackets will be skipped if the answer to the question is false.</p>
+
+<code><pre>
+//if the right arrow key is pressed, move 4 pixels to the right
+if (keyboard_check(vk_right))
+{
+ x = x + 5
+}</pre></code>
+
+<h5>if-else-statements</h5>
+<p>Do one thing or do the other thing. You have to do one.</p>
+<p>Real life example: if I'm at home, make dinner, otherwise buy a hamburger.</p>
+<code><pre>
+//move fast when hungry, otherwise move slow
+if (hungry = 1)
+{
+  x = x + 10
+} else
+{
+ x = x + 5
+}
+}</pre></code>
+
+<h5>Nested if-statements</h5>
+<p>Nested means 'one inside another'. A real life example would be:<br>If I'm hungry, then { if I'm at home, make dinner, otherwise buy a hamburger.}</p>
+<p>If you say 'no' to the outer if-statement, then you skip over all the code inside its curely brackets.</p>
+<code><pre>
+//if the right arrow key is pressed, then move. If you are hungry, move fast, otherwise move slow.
+if (keyboard_check(vk_right))
+{
+  if (hungry = 1)
+  {
+    x = x + 10
+  } else
+  {
+   x = x + 5
+  }
+}</pre></code>
+
+         <h5>Using a variable</h5>
+         <code><pre>
+//if the right arrow key is pressed, move 4 pixels to the right
+key_right = keyboard_check(vk_right)
+if (key_right)
+{
+ x += 4
+}</pre></code>
+         <h5>More variables</h5>
+         <code><pre>
+//if the right arrow key is pressed, move 4 pixels to the right
+movespeed = 4
+key_right = keyboard_check(vk_right)
+if (key_right)
+{
+ x += movespeed
+}</pre></code>
+         <h5>Check if a wall is in the way</h5>
+         <code><pre>
+//gravity: if we can move down 4 pixels without touching an obj_wall, then move down 4 pixels
+//note that place_meeting tells us if we would be touching overlapping an object if we moved to a certain place
+if (!place_meeting(x,y+4,obj_wall))
+{
+ y += 4
+}</pre></code>
+
+
+     </div>
+  </div>
+
+<h3>Player movement, gravity and jumping</h3>
+
+<p>This is a slightly simplified version of the code in Shaun Spalding's tutorial (linked at the start of this document. It works the same.</p>
+
+<p>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsemovementcode" aria-expanded="false" aria-controls="collapseExample">
+     Show me the code!
+   </button>
+ </p>
+ <div class="collapse" id="collapsemovementcode">
+   <div class="card card-block">
+     <code><pre>
+       ///put this in the player Create event code
+       yspeed = 0
+
+       ///put this in the player Step event code
+       dir = 0
+       walkspeed = 20
+       if (keyboard_check(vk_right))
+       {
+         dir = 1
+       }
+       if (keyboard_check(vk_left))
+       {
+         dir = -1
+       }
+
+       //movement code
+       if (keyboard_check(vk_right) || keyboard_check(vk_left))
+       {
+         if (!place_meeting(x + dir * walkspeed, y, obj_wall))
+         {
+           x += dir * walkspeed
+         } else
+         {
+           while (!place_meeting(x + dir * 1, y, obj_wall))
+           {
+             x += dir * 1
+           }
+         }
+       }
+
+       //gravity
+       yspeed = yspeed + 1
+       ydir = sign(yspeed)
+       if (ydir != 0)
+       {
+           if (!place_meeting(x, y + yspeed, obj_wall))
+           {
+             y += yspeed
+           } else
+           {
+             while (!place_meeting(x, y + ydir, obj_wall))
+             {
+               y += ydir
+             }
+             yspeed = 0
+           }
+       }
+
+       //jump
+       if (keyboard_check(vk_space))
+       {
+         if (place_meeting(x, y + 1, obj_wall))
+         {
+           yspeed = -20
+         }
+       }</pre>
+   </code>
+
+     </div>
+   </div>
 
   <h3>Simple animations example</h3>
+
+  <p>You will need to create new sprites for each animation.</p>
+
+  <p>To use this code, you need a sprites called <b>spr_player</b> and <b>spr_player_run</b></p>
+
+  <p>A sprite can be a single image, or a series of images (an animation).</p>
+
+<code><pre>
+  //animations (put this in obj_player Step code)
+  //if left arrow or right arrow is pressed
+  if (keyboard_check(vk_right) || keyboard_check(vk_left))
+  {
+    //do a running animation
+    sprite_index = spr_player_run //this needs to be the name of a sprite
+  } else
+  {
+    //do a standing animation
+    sprite_index = spr_player
+  }
+  //direction
+  if (keyboard_check(vk_left))
+  {
+   image_xscale = -1 //flip the sprite
+  } else
+  {
+    image_xscale = 1 //do not flip the sprite
+  }
+  //To do: if the player is not on the ground, show a falling animation
+  //To do: if the player is not on the ground
+  //      show a jumping animation if they are falling upwards (yDir is -1)
+  //     else show a falling animation
+</pre></code>
 
 
   </div>
