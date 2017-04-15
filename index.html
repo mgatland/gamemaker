@@ -373,6 +373,13 @@ if (!place_meeting(x,y+4,obj_wall))
 
   <p>A sprite can be a single image, or a series of images (an animation).</p>
 
+  <p>
+     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseanimationcode" aria-expanded="false" aria-controls="collapseExample">
+       Show me the code!
+     </button>
+   </p>
+   <div class="collapse" id="collapseanimationcode">
+     <div class="card card-block">
 <pre><code>
   //animations (put this in obj_player Step code)
   //if left arrow or right arrow is pressed
@@ -398,6 +405,103 @@ if (!place_meeting(x,y+4,obj_wall))
   //      show a jumping animation if they are falling upwards (yDir is -1)
   //     else show a falling animation
 </code></pre>
+      </div>
+    </div>
+
+
+    <h3>Simple Main Menu</h3>
+
+    <p>A menu where players can select different options using the keyboard.</p>
+
+    <p>
+       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsemenucode" aria-expanded="false" aria-controls="collapseExample">
+         Show me how!
+       </button>
+     </p>
+     <div class="collapse" id="collapsemenucode">
+       <div class="card card-block">
+         <p>Create a new Object, called obj_menu. Do not give it a sprite.</p>
+
+         <p>Create a new Font, called fnt_menu. You do this much like creating Sprites, Objects and Rooms. You can change the font and font size.</p>
+
+         <p>Create a new Room, called rm_menu. Reorder it so it is the first room, by dragging it up into the first spot in the list of rooms. GameMaker will start it first when you start your game.</p>
+
+         <p>Add one obj_menu object into the room.</p>
+
+         <p>Give obj_menu a Create event, a Step (normal step) event and a Draw (Draw GUI) event. Inside each event, add the Code action that we always use.</p>
+
+         <img src="images/obj_menu.png">
+
+         <p>If you want to draw anything custom on the screen, you need to add a Draw or Draw GUI event. Code inside these events is allowed to draw.</p>
+
+         <p>The difference between Draw and Draw GUI is that GUI drawing stays 'stuck' to the camera when the camera moves.
+           For example, if you wanted to draw a health bar in the corner of the screen, use Draw GUI. The normal Draw action
+            draws into the world. For example, if you wanted to show a health bar above an object in the game, you would use
+             Draw and that healthbar would scroll out of view as the object scrolled out of view.</p>
+
+<p>Put this in the Create event</p>
+  <pre><code>///put this in the menu Create event
+menu[0] = "Start"
+menu[1] = "Options"
+menu[2] = "Quit"
+
+mpos = 0 //which option is selected
+</pre></code>
+
+<p>Put this in the Step event</p>
+<pre><code>
+//arrow keys move through the menu
+if (keyboard_check_pressed(vk_down))
+{
+  mpos = mpos + 1
+}
+if (keyboard_check_pressed(vk_up))
+{
+  mpos = mpos - 1
+}
+//wrap around if we go off the end
+if (mpos < 0)
+{
+  mpos = 2
+}
+if (mpos > 2)
+{
+  mpos = 0
+}
+//menu actions
+if (keyboard_check_pressed(vk_enter))
+{
+  if (mpos = 0) //start
+  {
+    room_goto_next()
+  }
+  if (mpos = 2) //quit
+  {
+    game_end()
+  }
+}
+</pre></code>
+
+<p>Put this in the Draw event</p>
+<pre><code>
+  draw_set_font(fnt_menu)
+  for (i = 0; i < 3; i++)
+  {
+    if (mpos = i)
+    {
+      //drawing selected option
+      draw_set_colour(c_red)
+    } else
+    {
+      //drawing non-selected option
+      draw_set_colour(c_blue)
+    }
+    draw_text(100, 100+i*60,menu[i])
+  }
+  </code></pre>
+        </div>
+      </div>
+
 
 
   </div>
