@@ -520,7 +520,7 @@ if (keyboard_check_pressed(vk_enter))
 
 <p>Shot Create action:</p>
 <pre><code>
-dir = 0
+dir = 1
 </code></pre>
 
 <p>Shot Step action:</p>
@@ -536,7 +536,10 @@ x = x + dir * 10
 if (keyboard_check(vk_control))
 {
   shot = instance_create(x,y,obj_shot)
-  shot.dir = dir
+  if (dir = -1)
+  {
+    shot.dir = -1
+  }
 }
 </code></pre>
 
