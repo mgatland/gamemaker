@@ -503,6 +503,43 @@ if (keyboard_check_pressed(vk_enter))
       </div>
 
 
+      <h3>Simple Shooting</h3>
+
+      <p>Making one object create other objects can be used for many purposes besides shooting, but we'll use shooting as it is a classic example.</p>
+
+      <p>
+         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseshooting" aria-expanded="false" aria-controls="collapseExample">
+           Show me how!
+         </button>
+       </p>
+       <div class="collapse" id="collapseshooting">
+         <div class="card card-block">
+
+<p>Create a new sprite, spr_shot to represent a shot (or bullet) and then an object named obj_shot with a Create event and Step (normal) event.</p>
+
+<p>Shot Create action:</p>
+<pre><code>
+dir = 0
+</code></pre>
+
+<p>Shot Step action:</p>
+<pre><code>
+x = x + dir * 10
+</code></pre>
+
+<p>The code above lets us change the direction of the shot (left or right) by changing its dir variable to -1 for left or 1 for right.</p>
+
+<p>Add this to obj_player step action:</p>
+<pre><code>
+//shooting
+if (keyboard_check(vk_control))
+{
+  shot = instance_create(x,y,obj_shot)
+  shot.dir = dir
+}
+</code></pre>
+
+<p>The code creates a new obj_shot object, and creates a variable 'shot' we can use to change variables inside the shot.</p>
 
   </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
