@@ -215,10 +215,10 @@
      <div class="card card-block">
 
          <h5>A comment</h5>
-        <code><pre>
+        <pre><code>
 //this does nothing
 //lines that start with two slashes are ignored by the computer
-//these are called comments and you use them to make helpful notes</pre></code>
+//these are called comments and you use them to make helpful notes</code></pre>
 
 <h5>if-statement</h5>
 
@@ -226,17 +226,17 @@
 
 <p>In the code, the curley brackets {} show what code is connected to the if-statement. All code in the curley brackets will be skipped if the answer to the question is false.</p>
 
-<code><pre>
+<pre><code>
 //if the right arrow key is pressed, move 4 pixels to the right
 if (keyboard_check(vk_right))
 {
  x = x + 5
-}</pre></code>
+}</code></pre>
 
 <h5>if-else-statements</h5>
 <p>Do one thing or do the other thing. You have to do one.</p>
 <p>Real life example: if I'm at home, make dinner, otherwise buy a hamburger.</p>
-<code><pre>
+<pre><code>
 //move fast when hungry, otherwise move slow
 if (hungry = 1)
 {
@@ -245,12 +245,12 @@ if (hungry = 1)
 {
  x = x + 5
 }
-}</pre></code>
+}</code></pre>
 
 <h5>Nested if-statements</h5>
 <p>Nested means 'one inside another'. A real life example would be:<br>If I'm hungry, then { if I'm at home, make dinner, otherwise buy a hamburger.}</p>
 <p>If you say 'no' to the outer if-statement, then you skip over all the code inside its curely brackets.</p>
-<code><pre>
+<pre><code>
 //if the right arrow key is pressed, then move. If you are hungry, move fast, otherwise move slow.
 if (keyboard_check(vk_right))
 {
@@ -261,33 +261,33 @@ if (keyboard_check(vk_right))
   {
    x = x + 5
   }
-}</pre></code>
+}</code></pre>
 
          <h5>Using a variable</h5>
-         <code><pre>
+         <pre><code>
 //if the right arrow key is pressed, move 4 pixels to the right
 key_right = keyboard_check(vk_right)
 if (key_right)
 {
  x += 4
-}</pre></code>
+}</code></pre>
          <h5>More variables</h5>
-         <code><pre>
+         <pre><code>
 //if the right arrow key is pressed, move 4 pixels to the right
 movespeed = 4
 key_right = keyboard_check(vk_right)
 if (key_right)
 {
  x += movespeed
-}</pre></code>
+}</code></pre>
          <h5>Check if a wall is in the way</h5>
-         <code><pre>
+         <pre><code>
 //gravity: if we can move down 4 pixels without touching an obj_wall, then move down 4 pixels
 //note that place_meeting tells us if we would be touching overlapping an object if we moved to a certain place
 if (!place_meeting(x,y+4,obj_wall))
 {
  y += 4
-}</pre></code>
+}</code></pre>
 
 
      </div>
@@ -295,7 +295,7 @@ if (!place_meeting(x,y+4,obj_wall))
 
 <h3>Player movement, gravity and jumping</h3>
 
-<p>This is a slightly simplified version of the code in Shaun Spalding's tutorial (linked at the start of this document. It works the same.</p>
+<p>This is a slightly simplified version of the code in Shaun Spalding's tutorial (linked at the start of this document). It works the same.</p>
 
 <p>
    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsemovementcode" aria-expanded="false" aria-controls="collapseExample">
@@ -304,8 +304,7 @@ if (!place_meeting(x,y+4,obj_wall))
  </p>
  <div class="collapse" id="collapsemovementcode">
    <div class="card card-block">
-     <code><pre>
-       ///put this in the player Create event code
+<pre><code>///put this in the player Create event code
        yspeed = 0
 
        ///put this in the player Step event code
@@ -360,8 +359,8 @@ if (!place_meeting(x,y+4,obj_wall))
          {
            yspeed = -20
          }
-       }</pre>
-   </code>
+       }</code></pre>
+
 
      </div>
    </div>
@@ -374,7 +373,7 @@ if (!place_meeting(x,y+4,obj_wall))
 
   <p>A sprite can be a single image, or a series of images (an animation).</p>
 
-<code><pre>
+<pre><code>
   //animations (put this in obj_player Step code)
   //if left arrow or right arrow is pressed
   if (keyboard_check(vk_right) || keyboard_check(vk_left))
@@ -398,7 +397,7 @@ if (!place_meeting(x,y+4,obj_wall))
   //To do: if the player is not on the ground
   //      show a jumping animation if they are falling upwards (yDir is -1)
   //     else show a falling animation
-</pre></code>
+</code></pre>
 
 
   </div>
