@@ -18,7 +18,19 @@
   <div class="container">
     <h1>GameMaker in DIDG501</h1>
 
-    <p>New workshop material appears in the Google Doc first: <a target="_blank" href="https://goo.gl/TO6WnS">https://goo.gl/TO6WnS</a></p>
+    <p>Notes for beginner GameMaker tutorials at AUT.</p>
+
+    <p>Announcements and new material appears in the Google Doc: <a target="_blank" href="https://goo.gl/TO6WnS">https://goo.gl/TO6WnS</a></p>
+
+    <h3>Latest changes</h3>
+
+    <p>2017-05-07</p>
+    <ul>
+      <li>Added a link to Make A Game With No Experience video series</li>
+      <li>Tidied up several code examples</li>
+    </ul>
+
+    <p>2017-04-15: Added Simple Menu example</p>
 
     <h2>About GameMaker</h2>
 
@@ -57,14 +69,20 @@
     <p><a target="_blank" href="https://youtu.be/hzMNunoPd0o">Gamemaker basics</a> by Shaun Spalding</p>
     <p><a target="_blank" href="http://www.yoyogames.com/learn/platform">Platform Game series</a> by Shaun Spalding (this is a series of 12 videos)</p>
 
+    <p>If you want a different perspective:</p>
+
+    <p><a target="_blank" href="https://www.youtube.com/playlist?list=PLUtKzyIe0aB2HjpmBhnsHpK7ig0z7ohWw">Make A Game With No Experience</a> by Tom Francis</p>
+
+    <p>Tom's videos are much longer, but go into more detail. I like them a lot!</p>
+
     <h3>2. If you have a question, Google it.</h3>
 
     <p>For example:</p>
 
      <ul>
-       <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=gamemaker+menu+screen">gamemaker menu screen</a></li>
-       <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=how+to+make+jump+through+platforms+in+gamemaker">how to make jump through platforms in gamemaker</a></li>
-       <li><a target="_blank" href="https://www.google.co.nz/webhp?ion=1&espv=2&ie=UTF-8#q=restart+current+level+gamemaker">restart current level gamemaker</a></li>
+       <li><a target="_blank" href="http://www.google.com/search?q=gamemaker+menu+screen">gamemaker menu screen</a></li>
+       <li><a target="_blank" href="http://www.google.com/search?q=how+to+make+jump+through+platforms+in+gamemaker">how to make jump through platforms in gamemaker</a></li>
+       <li><a target="_blank" href="http://www.google.com/search?q=restart+current+level+gamemaker">restart current level gamemaker</a></li>
      </ul>
 
      <h3>3. Use the built-in help</h3>
@@ -306,61 +324,61 @@ if (!place_meeting(x,y+4,obj_wall))
  <div class="collapse" id="collapsemovementcode">
    <div class="card card-block">
 <pre><code>///put this in the player Create event code
-       yspeed = 0
+yspeed = 0
 
-       ///put this in the player Step event code
-       dir = 0
-       walkspeed = 20
-       if (keyboard_check(vk_right))
-       {
-         dir = 1
-       }
-       if (keyboard_check(vk_left))
-       {
-         dir = -1
-       }
+///put this in the player Step event code
+dir = 0
+walkspeed = 20
+if (keyboard_check(vk_right))
+{
+  dir = 1
+}
+if (keyboard_check(vk_left))
+{
+  dir = -1
+}
 
-       //movement code
-       if (keyboard_check(vk_right) || keyboard_check(vk_left))
-       {
-         if (!place_meeting(x + dir * walkspeed, y, obj_wall))
-         {
-           x += dir * walkspeed
-         } else
-         {
-           while (!place_meeting(x + dir * 1, y, obj_wall))
-           {
-             x += dir * 1
-           }
-         }
-       }
+//movement code
+if (keyboard_check(vk_right) || keyboard_check(vk_left))
+{
+  if (!place_meeting(x + dir * walkspeed, y, obj_wall))
+  {
+    x += dir * walkspeed
+  } else
+  {
+    while (!place_meeting(x + dir * 1, y, obj_wall))
+    {
+      x += dir * 1
+    }
+  }
+}
 
-       //gravity
-       yspeed = yspeed + 1
-       ydir = sign(yspeed)
-       if (ydir != 0)
-       {
-           if (!place_meeting(x, y + yspeed, obj_wall))
-           {
-             y += yspeed
-           } else
-           {
-             while (!place_meeting(x, y + ydir, obj_wall))
-             {
-               y += ydir
-             }
-             yspeed = 0
-           }
-       }
+//gravity
+yspeed = yspeed + 1
+ydir = sign(yspeed)
+if (ydir != 0)
+{
+  if (!place_meeting(x, y + yspeed, obj_wall))
+  {
+    y += yspeed
+  } else
+  {
+    while (!place_meeting(x, y + ydir, obj_wall))
+    {
+      y += ydir
+    }
+    yspeed = 0
+  }
+}
 
-       //jump
-       if (keyboard_check(vk_space))
-       {
-         if (place_meeting(x, y + 1, obj_wall))
-         {
-           yspeed = -20
-         }
-       }</code></pre>
+//jump
+if (keyboard_check(vk_space))
+{
+  if (place_meeting(x, y + 1, obj_wall))
+  {
+    yspeed = -20
+  }
+}</code></pre>
 
 
      </div>
@@ -381,30 +399,29 @@ if (!place_meeting(x,y+4,obj_wall))
    </p>
    <div class="collapse" id="collapseanimationcode">
      <div class="card card-block">
-<pre><code>
-  //animations (put this in obj_player Step code)
-  //if left arrow or right arrow is pressed
-  if (keyboard_check(vk_right) || keyboard_check(vk_left))
-  {
-    //do a running animation
-    sprite_index = spr_player_run //this needs to be the name of a sprite
-  } else
-  {
-    //do a standing animation
-    sprite_index = spr_player
-  }
-  //direction
-  if (keyboard_check(vk_left))
-  {
-   image_xscale = -1 //flip the sprite
-  } else
-  {
-    image_xscale = 1 //do not flip the sprite
-  }
-  //To do: if the player is not on the ground, show a falling animation
-  //To do: if the player is not on the ground
-  //      show a jumping animation if they are falling upwards (yDir is -1)
-  //     else show a falling animation
+<pre><code>///animations (put this in obj_player Step code)
+//if left arrow or right arrow is pressed
+if (keyboard_check(vk_right) || keyboard_check(vk_left))
+{
+  //play the running animation
+  sprite_index = spr_player_run //this needs to be the name of a sprite
+} else
+{
+  //play the standing animation
+  sprite_index = spr_player
+}
+//direction
+if (keyboard_check(vk_left))
+{
+ image_xscale = -1 //make the sprite flipped
+} else
+{
+  image_xscale = 1 //make the sprite not flipped
+}
+//To do: if the player is not on the ground, show a falling animation
+//To do: if the player is not on the ground
+//      show a jumping animation if they are falling upwards (yDir is -1)
+//     else show a falling animation
 </code></pre>
       </div>
     </div>
@@ -421,13 +438,13 @@ if (!place_meeting(x,y+4,obj_wall))
      </p>
      <div class="collapse" id="collapsemenucode">
        <div class="card card-block">
-         <p>Create a new Object, called obj_menu. Do not give it a sprite.</p>
+         <p><b>Create a new Object, called obj_menu</b>. Do not give it a sprite.</p>
 
-         <p>Create a new Font, called fnt_menu. You do this much like creating Sprites, Objects and Rooms. You can change the font and font size.</p>
+         <p><b>Create a new Font, called fnt_menu</b>. You do this much like creating Sprites, Objects and Rooms. You can change the font style and font size.</p>
 
-         <p>Create a new Room, called rm_menu. Reorder it so it is the first room, by dragging it up into the first spot in the list of rooms. GameMaker will start it first when you start your game.</p>
+         <p><b>Create a new Room, called rm_menu</b>. Reorder it so it is the first room, by dragging it up into the first spot in the list of rooms. GameMaker will start it first when you start your game.</p>
 
-         <p>Add one obj_menu object into the room.</p>
+         <p><b>Add one obj_menu object into the room</b>.</p>
 
          <p>Give obj_menu a Create event, a Step (normal step) event and a Draw (Draw GUI) event. Inside each event, add the Code action that we always use.</p>
 
@@ -436,9 +453,9 @@ if (!place_meeting(x,y+4,obj_wall))
          <p>If you want to draw anything custom on the screen, you need to add a Draw or Draw GUI event. Code inside these events is allowed to draw.</p>
 
          <p>The difference between Draw and Draw GUI is that GUI drawing stays 'stuck' to the camera when the camera moves.
-           For example, if you wanted to draw a health bar in the corner of the screen, use Draw GUI. The normal Draw action
-            draws into the world. For example, if you wanted to show a health bar above an object in the game, you would use
-             Draw and that healthbar would scroll out of view as the object scrolled out of view.</p>
+         For example, if you wanted to draw a health bar in the corner of the screen, use Draw GUI. The normal Draw action
+         draws into the world. For example, if you wanted to show a health bar above an object in the game, you would use
+         Draw and that healthbar would scroll out of view as the object scrolled out of view.</p>
 
 <p>Put this in the Create event</p>
   <pre><code>///put this in the menu Create event
@@ -485,21 +502,31 @@ if (keyboard_check_pressed(vk_enter))
 
 <p>Put this in the Draw event</p>
 <pre><code>
-  draw_set_font(fnt_menu)
-  for (i = 0; i < 3; i++)
+draw_set_font(fnt_menu)
+for (i = 0; i < 3; i++)
+{
+  if (mpos = i)
   {
-    if (mpos = i)
-    {
-      //drawing selected option
-      draw_set_colour(c_red)
-    } else
-    {
-      //drawing non-selected option
-      draw_set_colour(c_blue)
-    }
-    draw_text(100, 100+i*60,menu[i])
+    //drawing selected option
+    draw_set_colour(c_red)
+  } else
+  {
+    //drawing non-selected option
+    draw_set_colour(c_blue)
   }
+  draw_text(100, 100+i*60,menu[i])
+}
   </code></pre>
+
+  <p><b>Extra for experts:</b></p>
+
+  <p>We have 'hard-coded' the length of the menu. If you add another item to the menu, it won't appear on the screen and you won't be able to select it without tweaking some of the numbers.</p>
+
+  <p>You can instead use the command <b>array_length_1d</b> which counts how many items are in a list. Using this command, you should be able to write code that will adapt to the menu's length automatically.</p>
+
+  <pre><code>menuSize = array_length_1d(menu);
+//what now?</code></pre>
+
         </div>
       </div>
 
