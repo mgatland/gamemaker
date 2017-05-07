@@ -27,6 +27,7 @@
     <p>2017-05-07</p>
     <ul>
       <li>Added a link to Make A Game With No Experience video series</li>
+      <li>Added 'what if my images are blurry'</li>
       <li>Tidied up several code examples</li>
     </ul>
 
@@ -71,7 +72,7 @@
 
     <p>If you want a different perspective:</p>
 
-    <p><a target="_blank" href="https://www.youtube.com/playlist?list=PLUtKzyIe0aB2HjpmBhnsHpK7ig0z7ohWw">Make A Game With No Experience</a> by Tom Francis</p>
+    <p><span class="text-warning">(NEW)</span> <a target="_blank" href="https://www.youtube.com/playlist?list=PLUtKzyIe0aB2HjpmBhnsHpK7ig0z7ohWw">Make A Game With No Experience</a> by Tom Francis</p>
 
     <p>Tom's videos are much longer, but go into more detail. I like them a lot!</p>
 
@@ -98,7 +99,7 @@
 
      <p>The classes in this course should be helpful if you are finding it difficult to learn from the resources above.</p>
 
-     <h2>GameMaker at AUT</h2>
+     <h2>Solving Common Problems</h2>
 
      <p>This term, we are using GameMaker 1.4.</p>
 
@@ -146,6 +147,38 @@
         <p>Copy your game folder onto the desktop, then open it from there. When you leave the room, remember to copy it back onto your USB drive.</p>
     </div>
   </div>
+
+  <p>
+    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseBlurryBackgrounds" aria-expanded="false" aria-controls="collapseExample">
+     GameMaker makes my images blurry
+    </button>
+  </p>
+  <div class="collapse" id="collapseBlurryBackgrounds">
+    <div class="card card-block">
+      <h3>Are your images very large (more than 1024 pixels wide or tall?)</h3>
+
+      <p>If any sprite or background in your game is larger than the <b>texture pages size</b>, GameMaker will shrink it so it fits.</p>
+
+      <p>You can increase the texture pages size by going to Global Game Settings (the last item in the list on the left side of the screen), then going to 'Windows' (across the top) then 'Graphics' on the side.</p>
+
+      <p><img src="images/globalgamesettings-windows-graphics.jpg" alt="There is an option to change the texture pages size."></p>
+
+      <p>Please note that it is generally a good idea to avoid very large images in game development. Instead, try to create a scene by arranging several smaller images together.</p>
+
+      <p>There is more information about texture pages in the <a target="_blank" href="https://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20backgrounds/texture%20pages.html">GameMaker Texture Pages documentation.</a></p>
+
+      <h3>Other causes of blurry images</h3>
+
+      <p>If you have small images and draw them big, GameMaker deliberately blurs them. You can change this.</p>
+
+      <p>Go to Global Game Settings (the last item in the list on the left side of the screen), then choose 'Windows' (across the top) then 'Graphics' on the side.</p>
+
+      <p>Untick the option <b>Interpolate color between pixels</b>.</p>
+    </div>
+  </div>
+
+
+
 
 <h2>Workshop Activities</h2>
 
