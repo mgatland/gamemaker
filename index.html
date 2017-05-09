@@ -177,7 +177,48 @@
     </div>
   </div>
 
+  <p>
+    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseStuckInWalls" aria-expanded="false" aria-controls="collapseExample">
+     My player (or my monsters) get stuck in walls!
+    </button>
+  </p>
+  <div class="collapse" id="collapseStuckInWalls">
+    <div class="card card-block">
+      <h3>Player or creature gets stuck in walls</h3>
 
+      <p>Is this object animated? If your object is standing next to wall, and then it changes to a sprite that is larger than the sprite it had before, it might expand into the wall and get stuck.</p>
+
+      <p>To fix this, all sprites for the same object should have the same collision size.</p>
+
+      <p>First, Do NOT use 'Precise Collisions' on animated characters. (This makes their collision pixel-perfect, but if they are animated then their pixels will move around and they could get stuck.)</p>
+
+      <p><img src="images/stuck-fix/stuck-fix-sprite-properties.png"></p>
+
+      <p>Secondly, click on 'Modify Mask'. This shows which part of your sprite is used for collisions.</p>
+
+      <p><img src="images/stuck-fix/stuck-fix-mask-properties.png"></p>
+
+      <p>If it is set to 'Automatic', it will crop off the empty areas. But you may need to change it to 'Manual' and make the numbers the same as they are in all the other sprites for this object.</p>
+
+      <h3>What about flipping?</h3>
+
+      <p>If a player or creature gets stuck when it touches a wall and changes direction, it probably has more space on one side of its sprite than the other.</p>
+
+      <p><img src="images/stuck-fix/stuck-when-flipped.png"></p>
+
+      <p>This sprite has more space on one side than the other. If its face hits a wall, then it flips around, its tail will get stuck inside the wall.</p>
+
+      <p>You can fix this in a few ways:</p>
+
+      <ul>
+        <li>Adjust the collision mask so it has the same amount of no-collision space on each side</li>
+        <li>Move your image into the middle of the sprite</li>
+        <li>Use the 'trim' command to trim off the empty space.</li>
+      </ul>
+
+      <p><img src="images/stuck-fix/trim.png"></p>
+    </div>
+  </div>
 
 
 <h2>Workshop Activities</h2>
@@ -347,7 +388,7 @@ if (!place_meeting(x,y+4,obj_wall))
 
 <h3>Player movement, gravity and jumping</h3>
 
-<p>This is a slightly simplified version of the code in Shaun Spalding's tutorial (linked at the start of this document). It works the same.</p>
+<p>This is similar to the code in Shaun Spalding's tutorial (linked at the start of this document), but the code here is a bit simpler.</p>
 
 <p>
    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsemovementcode" aria-expanded="false" aria-controls="collapseExample">
@@ -371,35 +412,30 @@ if (keyboard_check(vk_left))
   dir = -1
 }
 
-//movement code
-if (keyboard_check(vk_right) || keyboard_check(vk_left))
+//moving sideways
+if (dir = 1 or dir = -1)
 {
-  if (!place_meeting(x + dir * walkspeed, y, obj_wall))
+  counter = 0
+  while (counter < walkspeed)
   {
-    x += dir * walkspeed
-  } else
-  {
-    while (!place_meeting(x + dir * 1, y, obj_wall))
+    counter++
+    if (!place_meeting(x + dir * 1, y, obj_wall))
     {
       x += dir * 1
     }
   }
 }
 
-//gravity
-yspeed = yspeed + 1
-ydir = sign(yspeed)
-if (ydir != 0)
+//falling
+yDir = sign(yspeed)
+counter = 0
+while (counter < abs(yspeed))
 {
-  if (!place_meeting(x, y + yspeed, obj_wall))
+  counter++
+  if (!place_meeting(x,y+yDir,obj_wall))
   {
-    y += yspeed
-  } else
-  {
-    while (!place_meeting(x, y + ydir, obj_wall))
-    {
-      y += ydir
-    }
+    y += yDir
+  } else {
     yspeed = 0
   }
 }
@@ -606,6 +642,88 @@ if (keyboard_check(vk_control))
 <p>The code creates a new obj_shot object, and creates a variable 'shot' we can use to change variables inside the shot.</p>
 
   </div>
+</div>
+
+ <h3>Walking up slopes</h3>
+
+      <p>Let the player character walk up slopes</p>
+
+      <p>
+         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSlopes" aria-expanded="false" aria-controls="collapseExample">
+           Show me how!
+         </button>
+      </p>
+      <div class="collapse" id="collapseSlopes">
+        <div class="card card-block">
+
+<p>Create a new sprite, spr_slope and draw a slope.</p>
+
+<p><img src="images/slope-1.png"></p>
+
+<p>Turn on 'Precise collision checking' so it uses pixel perfect collisions.</p>
+
+<p><img src="images/slope-2.png"></p>
+
+<p>Create a new object called <b>obj_slope</b>, change its sprite to <b>spr_slope</b>, and change its parent to <b>obj_wall</b>.</p>
+
+<p><img src="images/slope-3.png"></p>
+
+<p>Your character will now be able to walk down the slope. It will be treated like a wall (so you can stand on it), and it has precise collision checking (so its exact shape matters). However you cannot walk up the slope.</p>
+
+<p>To be able to walk up the slope, we need some new movement code.</p>
+
+<p>A slope is actually a series of very small walls - like stairs. We need to teach our character that if it can't walk forwards, it should try stepping up a little bit instead.</p>
+
+
+<p>Here is the new sideways movement code. The slope part is in red:</p>
+<pre><code>//movement code
+if (keyboard_check(vk_right) || keyboard_check(vk_left))
+{
+  counter = 0
+  while (counter < walkspeed)
+  {
+    counter++
+    if (!place_meeting(x + dir * 1, y, obj_wall))
+    {
+      x += dir * 1
+    } <b>else if (!place_meeting(x + dir * 1, y - 1, obj_wall))
+    {
+      x += dir * 1
+      y = y - 1
+    }</b>
+  }
+}
+</code></pre>
+
+<p>If you want to walk up even steeper slopes, simply add another copy of the red code, and change the step to 2 pixels:</p>
+<pre><code>//movement code
+if (keyboard_check(vk_right) || keyboard_check(vk_left))
+{
+  counter = 0
+  while (counter < walkspeed)
+  {
+    counter++
+    if (!place_meeting(x + dir * 1, y, obj_wall))
+    {
+      x += dir * 1
+    } <b>else if (!place_meeting(x + dir * 1, y - 1, obj_wall))
+    {
+      x += dir * 1
+      y = y - 1
+    } else if (!place_meeting(x + dir * 1, y - 2, obj_wall))
+    {
+      x += dir * 1
+      y = y - 2
+    }</b>
+  }
+}
+</code></pre>
+
+    </div>
+  </div>
+
+  <p>That's all so far.</p>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
