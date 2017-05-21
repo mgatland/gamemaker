@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GameMaker</title>
+    <title>GameMaker in DIDG501</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -15,6 +15,28 @@
     <![endif]-->
   </head>
   <body>
+  <header class="navbar">
+    <nav role="navigation" class="navbar navbar-default">
+      <div class="navbar-header">
+          <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">GameMaker at DIDG501</a>
+      </div>
+      <!-- Collection of nav links and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#getting-started">Getting Started</a></li>
+              <li><a href="#common-problems">Common Problems</a></li>
+              <li><a href="#activities">Activities</a></li>
+          </ul>
+      </div>
+    </nav>
+  </header>
   <div class="container">
     <h1>GameMaker in DIDG501</h1>
 
@@ -22,7 +44,21 @@
 
     <p>Announcements and new material appears in the Google Doc: <a target="_blank" href="https://goo.gl/TO6WnS">https://goo.gl/TO6WnS</a></p>
 
-    <h3>Latest changes</h3>
+    <h2>Latest changes</h2>
+
+    <p>2017-05-21</p>
+    <ul>
+      <li>Fixed example movement code (broken in previous update)</li>
+      <li>Added notes on reusable components and playtesting</li>
+      <li>Added lever and door example</li>
+      <li>layout improvements</li>
+    </ul>
+
+    <p>2017-05-09</p>
+    <ul>
+      <li>Troubleshooting characters stuck in walls</li>
+      <li>Walking up slopes activity</li>
+    </ul>
 
     <p>2017-05-07</p>
     <ul>
@@ -46,26 +82,26 @@
     </p>
     <div class="collapse" id="collapseExampleGames">
       <div class="card card-block">
-        Some locally made GameMaker games:</p>
+        <p>Some locally made GameMaker games:</p>
 
-       <ul>
-         <li><a target="_blank" href="http://sergiocornaga.tumblr.com/post/7416495044/you-have-to-go-down-the-hole-2009">Super Go Down the Hole</a> by Sergio Cornaga</li>
-         <li><a target="_blank" href="http://www.onegameamonth.com/Liannethy">Narcoleptic Chicken Kid</a> by Lianne Booton</li>
-       </ul>
+        <ul>
+          <li><a target="_blank" href="http://sergiocornaga.tumblr.com/post/7416495044/you-have-to-go-down-the-hole-2009">Super Go Down the Hole</a> by Sergio Cornaga</li>
+          <li><a target="_blank" href="http://www.onegameamonth.com/Liannethy">Narcoleptic Chicken Kid</a> by Lianne Booton</li>
+        </ul>
 
-       <p>Some commerically successful GameMaker games:</p>
+        <p>Some commerically successful GameMaker games:</p>
 
-       <ul>
-         <li><a target="_blank" href="http://store.steampowered.com/app/206190/">Gunpoint</a> by Tom Francis – around 700,000 copies sold</li>
-         <li><a target="_blank" href="http://store.steampowered.com/agecheck/app/219150/">Hotline Miami</a>
+        <ul>
+          <li><a target="_blank" href="http://store.steampowered.com/app/206190/">Gunpoint</a> by Tom Francis – around 700,000 copies sold</li>
+          <li><a target="_blank" href="http://store.steampowered.com/agecheck/app/219150/">Hotline Miami</a>
            by Jonatan Söderström and Dennis Wedin – about 2 million copies sold</li>
-       </ul>
+        </ul>
       </div>
     </div>
 
-    <h2>How to learn GameMaker</h2>
+    <h2 id="getting-started">Getting Started with GameMaker</h2>
 
-    <h3>1. Watch these tutorial videos:</h3>
+    <h3>1. Watch tutorial videos:</h3>
 
     <p><a target="_blank" href="https://youtu.be/hzMNunoPd0o">Gamemaker basics</a> by Shaun Spalding</p>
     <p><a target="_blank" href="http://www.yoyogames.com/learn/platform">Platform Game series</a> by Shaun Spalding (this is a series of 12 videos)</p>
@@ -80,28 +116,28 @@
 
     <p>For example:</p>
 
-     <ul>
-       <li><a target="_blank" href="http://www.google.com/search?q=gamemaker+menu+screen">gamemaker menu screen</a></li>
-       <li><a target="_blank" href="http://www.google.com/search?q=how+to+make+jump+through+platforms+in+gamemaker">how to make jump through platforms in gamemaker</a></li>
-       <li><a target="_blank" href="http://www.google.com/search?q=restart+current+level+gamemaker">restart current level gamemaker</a></li>
-     </ul>
+    <ul>
+      <li><a target="_blank" href="http://www.google.com/search?q=gamemaker+menu+screen">gamemaker menu screen</a></li>
+      <li><a target="_blank" href="http://www.google.com/search?q=how+to+make+jump+through+platforms+in+gamemaker">how to make jump through platforms in gamemaker</a></li>
+      <li><a target="_blank" href="http://www.google.com/search?q=restart+current+level+gamemaker">restart current level gamemaker</a></li>
+    </ul>
 
-     <h3>3. Use the built-in help</h3>
+    <h3>3. Use the built-in help</h3>
 
-     <p>In GameMaker, press F1 to open the help. This includes a reference manual which lists every command you can use while coding in GameMaker.</p>
+    <p>In GameMaker, press F1 to open the help. This includes a reference manual which lists every command you can use while coding in GameMaker.</p>
 
-     <p>While writing code, If you start typing a command then wait for a moment, GameMaker will display a list of commands you might be typing.</p>
+    <p>While writing code, If you start typing a command then wait for a moment, GameMaker will display a list of commands you might be typing.</p>
 
-     <p>For example, type in 'place' then wait for a second (or press Ctrl) and this will appear:</p>
-     <img src="images/autocomplete.png">
+    <p>For example, type in 'place' then wait for a second (or press Ctrl) and this will appear:</p>
+    <img src="images/autocomplete.png">
 
-     <h3>4. This course!</h3>
+    <h3>4. Attend this course!</h3>
 
-     <p>The classes in this course should be helpful if you are finding it difficult to learn from the resources above.</p>
+    <p>The classes in this course should be helpful if you are finding it difficult to learn from the resources above.</p>
 
-     <h2>Solving Common Problems</h2>
+    <h2 id="common-problems">Common Problems</h2>
 
-     <p>This term, we are using GameMaker 1.4.</p>
+    <p>We are using GameMaker 1.4.</p>
 
     <p>
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGMatHome" aria-expanded="false" aria-controls="collapseExample">
@@ -114,39 +150,39 @@
 
         <p>Due to recent changes, getting GameMaker for free is a little bit tricky. Follow these steps.</p>
 
-       <p>(The trick is to install GameMaker 1.3, which comes with a free licence, then upgrade to GameMaker 1.4, which no longer comes with a free licence as of 8th March 2017.)</p>
+      <p>(The trick is to install GameMaker 1.3, which comes with a free licence, then upgrade to GameMaker 1.4, which no longer comes with a free licence as of 8th March 2017.)</p>
 
-       <ul>
-       <li>Go to <a target="_blank" href="http://ccm.net/download/download-23641-gamemaker-studio-standard">http://ccm.net/download/download-23641-gamemaker-studio-standard</a></li>
-       <li>Click the green download button (It says Download Freeware 172.7 MB)</li>
-       <li>Wait for the download to finish.</li>
-       <li>Run the installer and then start GameMaker Studio 1.3</li>
-       <li>Two windows will pop up. One says “A new version of GameMaker-Studio is available”.</li>
-       <li>Choose Remind Me Later - we do not want to update to the new version yet!</li>
-       <li>The other window has 3 options. Choose the middle option by entering your email address and clicking ‘register’. Follow the process until you are emailed a licence key. Enter this in the box and continue. Then close GameMaker and reopen it.</li>
-       <li>GameMaker will ask you t.o update again. Now you have a licence, so it is OK to update to the latest version.</li>
-     </ul>
-   </div>
- </div>
-
- <p>
-   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTipsAtAUT" aria-expanded="false" aria-controls="collapseExample">
-     Help, GameMaker is too slow at AUT <br> Or GameMaker won't open my game at AUT
-   </button>
- </p>
- <div class="collapse" id="collapseTipsAtAUT">
-   <div class="card card-block">
-        <h3>Speed up saving, running and backups</h3>
-        <p>In GameMaker, go to File -> Preferences.</p>
-
-        <p>Near the bottom, you will see paths for Temp directory, Asset Cache directory, Backup directory and Home directory. Change all of these to a folder on your computer's desktop.</p>
-        <p>This will make GameMaker work a lot faster.</p>
-
-        <h3>GameMaker won't open my game???</h3>
-        <p>It doesn't like reading games straight from a USB drive.</p>
-        <p>Copy your game folder onto the desktop, then open it from there. When you leave the room, remember to copy it back onto your USB drive.</p>
+      <ul>
+        <li>Go to <a target="_blank" href="http://ccm.net/download/download-23641-gamemaker-studio-standard">http://ccm.net/download/download-23641-gamemaker-studio-standard</a></li>
+        <li>Click the green download button (It says Download Freeware 172.7 MB)</li>
+        <li>Wait for the download to finish.</li>
+        <li>Run the installer and then start GameMaker Studio 1.3</li>
+        <li>Two windows will pop up. One says “A new version of GameMaker-Studio is available”.</li>
+        <li>Choose Remind Me Later - we do not want to update to the new version yet!</li>
+        <li>The other window has 3 options. Choose the middle option by entering your email address and clicking ‘register’. Follow the process until you are emailed a licence key. Enter this in the box and continue. Then close GameMaker and reopen it.</li>
+        <li>GameMaker will ask you t.o update again. Now you have a licence, so it is OK to update to the latest version.</li>
+      </ul>
     </div>
   </div>
+
+  <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTipsAtAUT" aria-expanded="false" aria-controls="collapseExample">
+     Make GameMaker work faster at AUT <br> Or <br> GameMaker won't open my game at AUT
+    </button>
+  </p>
+<div class="collapse" id="collapseTipsAtAUT">
+  <div class="card card-block">
+    <h3>Speed up saving, running and backups</h3>
+    <p>In GameMaker, go to File -> Preferences.</p>
+
+    <p>Near the bottom, you will see paths for Temp directory, Asset Cache directory, Backup directory and Home directory. Change all of these to a folder on your computer's desktop.</p>
+    <p>This will make GameMaker work a lot faster.</p>
+
+    <h3>GameMaker won't open my game???</h3>
+    <p>It doesn't like reading games straight from a USB drive.</p>
+    <p>Copy your game folder onto the desktop, then open it from there. When you leave the room, remember to copy it back onto your USB drive.</p>
+  </div>
+</div>
 
   <p>
     <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseBlurryBackgrounds" aria-expanded="false" aria-controls="collapseExample">
@@ -162,6 +198,8 @@
       <p>You can increase the texture pages size by going to Global Game Settings (the last item in the list on the left side of the screen), then going to 'Windows' (across the top) then 'Graphics' on the side.</p>
 
       <p><img src="images/globalgamesettings-windows-graphics.jpg" alt="There is an option to change the texture pages size."></p>
+
+      <p>Change the Size to something larger.</p>
 
       <p>Please note that it is generally a good idea to avoid very large images in game development. Instead, try to create a scene by arranging several smaller images together.</p>
 
@@ -221,7 +259,7 @@
   </div>
 
 
-<h2>Workshop Activities</h2>
+<h2 id="activities">Workshop Activities</h2>
 
 <h3>Creating Sprites, Objects and Rooms</h3>
 
@@ -337,7 +375,6 @@ if (hungry = 1)
 } else
 {
  x = x + 5
-}
 }</code></pre>
 
 <h5>Nested if-statements</h5>
@@ -398,9 +435,9 @@ if (!place_meeting(x,y+4,obj_wall))
  <div class="collapse" id="collapsemovementcode">
    <div class="card card-block">
 <pre><code>///put this in the player Create event code
-yspeed = 0
+yspeed = 0</code></pre>
 
-///put this in the player Step event code
+<pre><code>///put this in the player Step event code
 dir = 0
 walkspeed = 20
 if (keyboard_check(vk_right))
@@ -427,6 +464,8 @@ if (dir = 1 or dir = -1)
 }
 
 //falling
+yspeed += 1
+
 yDir = sign(yspeed)
 counter = 0
 while (counter < abs(yspeed))
@@ -517,7 +556,7 @@ if (keyboard_check(vk_left))
 
          <p>Give obj_menu a Create event, a Step (normal step) event and a Draw (Draw GUI) event. Inside each event, add the Code action that we always use.</p>
 
-         <img src="images/obj_menu.png">
+         <p><img src="images/obj_menu.png"></p>
 
          <p>If you want to draw anything custom on the screen, you need to add a Draw or Draw GUI event. Code inside these events is allowed to draw.</p>
 
@@ -644,6 +683,52 @@ if (keyboard_check(vk_control))
   </div>
 </div>
 
+  <h3>General info: Building games with reusable components</h3>
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseReusableComponents" aria-expanded="false" aria-controls="collapseReusableComponents">
+        What's this about?
+      </button>
+    </p>
+    <div class="collapse" id="collapseReusableComponents">
+      <div class="card card-block">
+        <p>I've noticed a few people drawing their levels as one huge Photoshop document per level. Thats' OK, and some games do it that way – it's great for making everything look unique. But most games build their levels out of reusable parts.</p>
+
+        <p><img src="images/reusable-components/minecraft.jpg"></p>
+
+        <p>You probably know that Minecraft's world is made out of repeated parts. All the grass in this scene is the same block over and over again. The trees are made of wood blocks stacked on top of each other.</p>
+
+        <p><img src="images/reusable-components/legend-of-zelda.png"></p>
+
+        <p>Classic 2D games like The Legend of Zelda also use repeated tiles in an obvious way. You can see the rocks are repeated. You may also notice that most of the trees are the same square tile.</p>
+
+        <p><img src="images/reusable-components/skyrim-table-1.jpg"></p>
+
+        <p>In 3D games, level designers can rotate and resize the same object so it looks different to the player. Sometimes they use even more clever tricks. In this screenshot, we see a low shelf. But when the player uses a cheat code to look under the floor:</p>
+
+        <p><img src="images/reusable-components/skyrim-table-2.jpg"></p>
+
+        <p>You can see that the "low shelf" was actually just the top of a bookshelf. The level designer has sunk it into the ground to make it look like a new piece of furniture! Much faster than asking the artist to make something new.</p>
+
+        <p>Think about how you can use reusable components in your game to save time.</p>
+
+        <p>There are a lot of great talks about asset reuse in Skyrim and other Bethesda games. Take a look at <a href="https://www.slideshare.net/JoelBurgess/gdc2013-kit-buildingfinal?ref=https://www.pcgamesn.com/fallout-4/bethesda-open-world-design" target="_blank">these slides</a>, starting at slide 128, for an example of how Skyrim's organic looking caves are made quickly and easily by level designers.</p>
+
+      </div>
+    </div>
+
+  <h3>General info: Playtesting</h3>
+
+  <p>Playtesting your game is the best and easiest way to make it good! See the slides from my <a href="http://www.matthewgatland.com/playtesting" target="_blank">NZGDC Playtesting talk</a>.</p>
+
+  <p>In short:</p>
+  <ul>
+    <li>Ask someone to play your game.</li>
+    <li>Watch and listen, but don't help them or criticise them.</li>
+    <li>Note when they get stuck, confused, or frustrated.</li>
+    <li>Fix the problems you find, then playtest again and see if it works better.</li>
+  </ul>
+
  <h3>Walking up slopes</h3>
 
       <p>Let the player character walk up slopes</p>
@@ -674,6 +759,7 @@ if (keyboard_check(vk_control))
 
 <p>A slope is actually a series of very small walls - like stairs. We need to teach our character that if it can't walk forwards, it should try stepping up a little bit instead.</p>
 
+<p><img src="images/slopes.png"></p>
 
 <p>Here is the new sideways movement code. The slope part is in red:</p>
 <pre><code>//movement code
@@ -719,8 +805,105 @@ if (keyboard_check(vk_right) || keyboard_check(vk_left))
 }
 </code></pre>
 
+  <p>As usual, you can watch a <a href="https://www.youtube.com/watch?v=1r1rElIiWqw" target="_blank">video tutorial</a> if you want to see a different approach.</p>
+
     </div>
   </div>
+
+
+  <h3>A lever or switch that opens and closes a door</h3>
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSwitchAndDoor" aria-expanded="false" aria-controls="collapseSwitchAndDoor">
+        Let's do it!
+      </button>
+    </p>
+    <div class="collapse" id="collapseSwitchAndDoor">
+      <div class="card card-block">
+        <p>OK, there are two parts: A lever and a door.</p>
+
+        <h4>Sprites</h4>
+
+        <p>For both lever and door, we use a sprite with two frames of animation to represent "off" and "on" for the lever and "closed" and "open" for the door.</p>
+
+        <p><img src="images/lever-and-door/lever-sprite.png"></p>
+
+        <p><img src="images/lever-and-door/door-sprite.png"></p>
+
+        <p>Create an empty sprite, called <b>spr_empty</b>, with no image inside. We will use this to make the door stop colliding so the player can walk through it.</p>
+
+        <p><img src="images/lever-and-door/spr_empty.png"></p>
+
+        <h4>Objects</h4>
+
+        <p>Create obj_door and obj_lever. Connect them to the right sprites.</p>
+
+        <p>For the door, make its parent <b>obj_wall</b>. This means the player cannot walk through it:</p>
+
+        <p><img src="images/lever-and-door/obj_door.png"></p>
+
+        <p>Give both objects a <b>Create</b> event and <b>Step</b> event, just like usual.</p>
+
+        <h4>Lever code:</h4>
+
+        <p>The lever changes (from on to off, or from off to on) when you touch it. We don't want the lever to flick constantly when you stand on it, so it only triggers when you <b>start touching it</b> - i.e. you are touching it now, but you were not touching it last time we checked.</p>
+
+        <p>To keep track of this, we need a variable <code>wasTouching</code> which keeps saves of the collision information from the one frame so we can use it in the next frame.</p>
+
+<pre><code>///Lever Create
+on = false
+wasTouching = false
+image_speed = 0 //do not animate
+</code></pre>
+
+<pre><code>///Lever Step
+isTouching = place_meeting(x,y,obj_player)
+
+//if the player just started touching us
+if (isTouching = true and wasTouching = false)
+{
+  //reverse it - 1 becomes 1, or 0 becomes 1
+  on = !on
+  //update my image
+  //either sprite 0 or sprite 1
+  image_index = on
+  //open or close the door
+  obj_door.open = on
+}
+
+wasTouching = isTouching //remember for next time
+</code></pre>
+
+
+        <h4>Door code:</h4>
+
+        <p><code>mask_index</code> sets which sprite is used for collisions with this object. For the door, we change its mask to the empty spr_empty when it is open. The door will still look normal, but it will be invisible for collisions.</p>
+
+        <p>Setting <code>mask_index</code> to -1 tells GameMaker to use the sprite as the mask.</p>
+
+<pre><code>///Door Create
+open = false
+image_speed = 0 //do not animate
+</code></pre>
+
+
+<pre><code>///Door Step
+if (open)
+{
+  //turn off collisions
+  mask_index = spr_empty
+} else
+{
+  //normal collisions
+  mask_index = -1
+}
+
+//update my image
+image_index = open //either 0 or 1
+</code></pre>
+
+      </div>
+    </div>
 
   <p>That's all so far.</p>
 
