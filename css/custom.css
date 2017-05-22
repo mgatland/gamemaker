@@ -19,8 +19,17 @@
 
 
 .card img {
-    width: inherit;
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    border: 8px solid white;
 }
+
+.card img:hover {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    border: 8px solid #d1f7ff;
+}
+
 
 code b {
     color: red;
