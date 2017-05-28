@@ -976,6 +976,130 @@ image_index = open //either 0 or 1
       </div>
     </div>
 
+  <h3>Using Global Variables for plot</h3>
+
+    <p>
+      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseGlobalVariablesForPlot" aria-expanded="false" aria-controls="collapseGlobalVariablesForPlot">
+        Global Variables for plot
+      </button>
+    </p>
+    <div class="collapse" id="collapseGlobalVariablesForPlot">
+      <div class="card card-block">
+
+      <p>You may want to keep track of some information from level to level. Maybe:</p>
+
+      <p>Is the player using violent or non-violent solutions?</p>
+      <p>Did the player pick up the Golden Key?</p>
+
+      <p>This is easy with global variables. Global variables are shared. Anyone in the game can see their value and change it. It's a bit like writing up on the whiteboard in class.</p>
+
+      <p>It's good to set them up once at the start of the game. Maybe in your menu screen's Create code:</p>
+
+      <p><img src="images/room-create-code.png"></p>
+
+<pre><code>///menu room create code
+global.playerIsViolent = false
+global.playerHasKey = false
+</code></pre>
+
+      <p>Now we can change those variables anywhere. For example, I added one line to where my enemy gets hurt:</p>
+
+<pre><code><span style="color:grey">///enemy step code
+if (place_meeting(x,y,obj_shot)) {
+    health--
+    </span>global.playerIsViolent = true
+<span style="color:grey">}</span>
+</code></pre>
+
+      <p>And I put this code in my obj_key</p>
+
+<pre><code>///obj_key step code
+if (place_meeting(x,y,obj_player)) {
+    global.playerHasKey = true
+    instance_destroy()
+}
+</code></pre>
+
+  <p>Any of my objects can check the global variables and change their behaviour. For example, this door disappears if you have the key:</p>
+
+<pre><code>///obj_locked_door step code
+if (global.playerHasKey === true) {
+    instance_destroy()
+}
+</code></pre>
+
+      <p>This shopkeeper says something different if you are violent:</p>
+
+<pre><code>///obj_shopkeeper Draw code
+if (place_meeting(x,y,obj_player)) {
+  draw_set_color(c_white)
+  if (global.playerIsViolent) {
+      draw_text(x, y - 128, "I don't serve violent people!")
+  } else {
+      draw_text(x, y - 128, "Welcome to my shop!")
+  }
+}
+</code></pre>
+      </div>
+    </div>
+
+    <h3>Moving things at an angle</h3>
+
+    <p>
+      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseMoveAtAngle" aria-expanded="false" aria-controls="collapseMoveAtAngle">
+        Moving things at an angle
+      </button>
+    </p>
+    <div class="collapse" id="collapseMoveAtAngle">
+      <div class="card card-block">
+      <p>To move something at an angle:</p>
+
+<pre><code>///obj_shot Step code
+var angle = 45 //in degrees
+var speed = 10
+x += lengthdir_x(speed, angle)
+y += lengthdir_y(speed, angle)
+</code></pre>
+
+      <p>To get the angle from one thing to another, use <code>point_direction</code></p>
+
+<pre><code>///example: point from me to the mouse arrow
+var angle = point_direction(x,y,mouse_x,mouse_y)
+</code></pre>
+      </div>
+    </div>
+
+    <h3>Parallax backgrounds</h3>
+
+    <p>
+      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseParallax" aria-expanded="false" aria-controls="collapseParallax">
+        Parallax
+      </button>
+    </p>
+    <div class="collapse" id="collapseParallax">
+      <div class="card card-block">
+      <p>Add backgrounds to your game (just like adding a Sprite)</p>
+
+      <p>In the room editor, you can add the backgrounds using the backgrounds tab.</p>
+
+      <p>To make a background parallax, you move it when the camera (or View) moves. Ironically, to make something appear to not move (like the sun), you have to move it at the same speed as the camera moves:</p>
+
+      <p>If you want something to move a little bit, you move it a fraction of the speed of the view.</p>
+
+      <p>Create and object called obj_scroller. Add it to your room. Give it this Step code:</p>
+
+<pre><code>///obj_scroller
+//sun - move at full speed of camera
+background_x[0] = view_xview[0] * 1
+background_y[0] = view_yview[0] * 1
+//mountains - move at half speed of camera
+background_x[1] = view_xview[0] * 0.5
+background_y[1] = view_yview[0] * 0.5
+</code></pre>
+
+      </div>
+    </div>
+
   <p>That's all so far.</p>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
