@@ -46,6 +46,44 @@
 
     <h2>Latest changes</h2>
 
+<!--
+If I run the course again, hopefully I'll find these notes!
+
+Things I never wrote up:
+
+* How to have more than one wall type, using parenting
+* Demo parenting by making walls move x = x + 1, then the subtype do y = y + 1, then do both using event_inherited()
+* Add backgrounds and decorative objects (they're just objects with no code)
+* Displaying hit points (or other information) on the HUD
+   * obj_player Draw_GUI, use a repeat (hitpoints) and draw_sprite
+* How to have more than one level - room_goto_next() when touching the exit
+
+Most common problems:
+Collision sprites changing size - i can’t walk sideways. Emphasise single mask and simple mask settings
+Don't use 'precise collision checks'
+
+Things to change or add if I teach this course again:
+Ideas for making enemies would be popular
+
+The tutorial for enemies, with ‘fear of heights’ not working - like 100% of people who followed that tutorial ended up with it not working. Write my own version that works. (The sprite y stuff never worked)
+A fix for player\creatures starting off stuck in the ground
+(rare): sometimes people instantly going to a new room after a menu so we don’t see the menu, ie if holding enter selects an option but then exits the next menu
+* Keyboard held vs keyboard hit
+ 
+Melee attacks
+More advanced states - shooting with reloading animation, animations triggered by states
+Conversation engine with pages you advance through
+My switch\door system, but linking one switch to one door with instance creation code
+Set an index on each, check the index in with (obj_door) { if (doorid = otherid)}
+(do more research on very large images and the artefacts and errors this can cause
+In my simple movement code, use repeat (movespeed) instead of for or while with a counter
+Start earlier and make students do activities for a while before starting their real game - have self-tests, try to get everyone learning basic skills
+Maybe include some of the things people have done:
+Moving platforms - people had trouble with the Sean Spalding tutorial for this, maybe do a simpler version
+handling the edge cases is interesting (approaching from the side - or vertical moving platforms
+
+-->
+
     <p>2017-05-28</p>
     <ul>
       <li>Added parallax, moving at angles, global variables and releasing your game</li>
