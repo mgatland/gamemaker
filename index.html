@@ -76,11 +76,16 @@ Conversation engine with pages you advance through
 My switch\door system, but linking one switch to one door with instance creation code
 Set an index on each, check the index in with (obj_door) { if (doorid = otherid)}
 (do more research on very large images and the artefacts and errors this can cause
-In my simple movement code, use repeat (movespeed) instead of for or while with a counter
 Start earlier and make students do activities for a while before starting their real game - have self-tests, try to get everyone learning basic skills
 Maybe include some of the things people have done:
 Moving platforms - people had trouble with the Sean Spalding tutorial for this, maybe do a simpler version
 handling the edge cases is interesting (approaching from the side - or vertical moving platforms
+make my simple code more compatible with Sean's, so you can use his other tutorials? i.e. use hsp and move as variables.
+
+done
+
+2017-05-31:
+In my simple movement code, use repeat (movespeed) instead of for or while with a counter
 
 -->
 
@@ -537,10 +542,8 @@ if (keyboard_check(vk_left))
 //moving sideways
 if (dir = 1 or dir = -1)
 {
-  counter = 0
-  while (counter < walkspeed)
+  repeat (walkspeed)
   {
-    counter++
     if (!place_meeting(x + dir * 1, y, obj_wall))
     {
       x += dir * 1
@@ -550,12 +553,10 @@ if (dir = 1 or dir = -1)
 
 //falling
 yspeed += 1
-
 yDir = sign(yspeed)
-counter = 0
-while (counter < abs(yspeed))
+
+repeat(abs(yspeed))
 {
-  counter++
   if (!place_meeting(x,y+yDir,obj_wall))
   {
     y += yDir
