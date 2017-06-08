@@ -89,6 +89,11 @@ In my simple movement code, use repeat (movespeed) instead of for or while with 
 
 -->
 
+    <p>2017-06-08</p>
+    <ul>
+      <li>Improved tips on characters getting stuck</li>
+    </ul>
+
     <p>2017-05-28</p>
     <ul>
       <li>Added parallax, moving at angles, global variables and releasing your game</li>
@@ -264,7 +269,7 @@ In my simple movement code, use repeat (movespeed) instead of for or while with 
   </div>
 
   <p>
-    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseStuckInWalls" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseStuckInWalls" aria-expanded="false" aria-controls="collapseExample">
      My player (or other characters) get stuck in walls!
     </button>
   </p>
@@ -272,9 +277,19 @@ In my simple movement code, use repeat (movespeed) instead of for or while with 
     <div class="card card-block">
       <h3>Player or creature gets stuck in walls</h3>
 
-      <p>Is this object animated? If your object is standing next to wall, and then it changes to a sprite that is larger than the sprite it had before, it might expand into the wall and get stuck.</p>
+      <p>Is this object animated? The problem is when you change to an animation (sprite) that is a different shape. If the shape is bigger than your previous sprite, you might expand into the wall. Now you are stuck!</p>
 
-      <p>To fix this, all sprites for the same object should have the same collision size.</p>
+      <p>To fix this, set up your object to always use the same sprite for collisions, even if the visual sprite changes.</p>
+
+	  <p><img src="images/stuck-fix/mask-none.png"></p>
+
+	  <p><img src="images/stuck-fix/mask-set.png"></p>
+
+      <p>Now my player will use its initial sprite for all collisions, even if I change to an animation that is a different shape.</p>
+
+      <h3>But that's not enough</h3>
+
+      <p>We also should adjust the collision shape of that sprite.</p>
 
       <p>First, Do NOT use 'Precise Collisions' on animated characters. (This makes their collision pixel-perfect, but if they are animated then their pixels will move around and they could get stuck.)</p>
 
@@ -284,25 +299,19 @@ In my simple movement code, use repeat (movespeed) instead of for or while with 
 
       <p><img src="images/stuck-fix/stuck-fix-mask-properties.png"></p>
 
-      <p>If it is set to 'Automatic', it will crop off the empty areas. But you may need to change it to 'Manual' and make the numbers the same as they are in all the other sprites for this object.</p>
+      <p>If it is set to 'Automatic', it will crop off the empty areas. But <b>if your sprite can turn around, it must have the same amount of space on each side.</b></p>
 
-      <h3>What about flipping?</h3>
+      <p>My sprite here is <b>bad</b> because it has more space on the right side.</p>
 
-      <p>If a player or creature gets stuck when it touches a wall and changes direction, it probably has more space on one side of its sprite than the other.</p>
+      <p>An easy way to fix this is to use the 'trim' command to cut off the empty space. Make sure you center the sprite again after trimming it.</p>
 
-      <p><img src="images/stuck-fix/stuck-when-flipped.png"></p>
-
-      <p>This sprite has more space on one side than the other. If its face hits a wall, then it flips around, its tail will get stuck inside the wall.</p>
-
-      <p>You can fix this in a few ways:</p>
-
-      <ul>
-        <li>Adjust the collision mask so it has the same amount of no-collision space on each side</li>
-        <li>Move your image into the middle of the sprite</li>
-        <li>Use the 'trim' command to trim off the empty space.</li>
-      </ul>
+	  <p><img src="images/stuck-fix/edit-sprite.png"></p>
 
       <p><img src="images/stuck-fix/trim.png"></p>
+
+      <p>Now check the mask again:</p>
+
+      <p><img src="images/stuck-fix/final-mask.png"></p>
     </div>
   </div>
 
@@ -772,7 +781,7 @@ if (keyboard_check(vk_control))
   <h3>General info: Building games with reusable components</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseReusableComponents" aria-expanded="false" aria-controls="collapseReusableComponents">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseReusableComponents" aria-expanded="false" aria-controls="collapseReusableComponents">
         What's this about?
       </button>
     </p>
@@ -900,7 +909,7 @@ if (keyboard_check(vk_right) || keyboard_check(vk_left))
   <h3>A lever or switch that opens and closes a door</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseSwitchAndDoor" aria-expanded="false" aria-controls="collapseSwitchAndDoor">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseSwitchAndDoor" aria-expanded="false" aria-controls="collapseSwitchAndDoor">
         Let's do it!
       </button>
     </p>
@@ -994,7 +1003,7 @@ image_index = open //either 0 or 1
   <h3>How to publish and share your game</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseStandalone" aria-expanded="false" aria-controls="collapseStandalone">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseStandalone" aria-expanded="false" aria-controls="collapseStandalone">
         This sounds easy
       </button>
     </p>
@@ -1023,7 +1032,7 @@ image_index = open //either 0 or 1
   <h3>Using Global Variables for plot</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseGlobalVariablesForPlot" aria-expanded="false" aria-controls="collapseGlobalVariablesForPlot">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseGlobalVariablesForPlot" aria-expanded="false" aria-controls="collapseGlobalVariablesForPlot">
         Global Variables for plot
       </button>
     </p>
@@ -1090,7 +1099,7 @@ if (place_meeting(x,y,obj_player)) {
     <h3>Moving things at an angle</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseMoveAtAngle" aria-expanded="false" aria-controls="collapseMoveAtAngle">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseMoveAtAngle" aria-expanded="false" aria-controls="collapseMoveAtAngle">
         Moving things at an angle
       </button>
     </p>
@@ -1116,7 +1125,7 @@ var angle = point_direction(x,y,mouse_x,mouse_y)
     <h3>Parallax backgrounds</h3>
 
     <p>
-      <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseParallax" aria-expanded="false" aria-controls="collapseParallax">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#collapseParallax" aria-expanded="false" aria-controls="collapseParallax">
         Parallax
       </button>
     </p>
