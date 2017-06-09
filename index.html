@@ -61,11 +61,12 @@ Things I never wrote up:
 Most common problems:
 Collision sprites changing size - i can’t walk sideways. Emphasise single mask and simple mask settings
 Don't use 'precise collision checks'
+Really understanding 'variable not set' errors, what causes them and how to fix
 
 Things to change or add if I teach this course again:
 Ideas for making enemies would be popular
 
-The tutorial for enemies, with ‘fear of heights’ not working - like 100% of people who followed that tutorial ended up with it not working. Write my own version that works. (The sprite y stuff never worked)
+The tutorial for enemies, with ‘fear of heights’ not working - like 100% of people who followed that tutorial ended up with it not working. The issue is that the image_xscale is negative if the sprite flips.
 A fix for player\creatures starting off stuck in the ground
 (rare): sometimes people instantly going to a new room after a menu so we don’t see the menu, ie if holding enter selects an option but then exits the next menu
 * Keyboard held vs keyboard hit
